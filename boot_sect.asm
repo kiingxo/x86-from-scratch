@@ -1,6 +1,22 @@
-; A simple boot sector that loops forever
-loop:
-    jmp loop    ; Jump to itself forever
+[org 0x7c00]
+[bits 16]
 
-times 510-($-$$) db 0    ; Pad with zeros to byte 510
-dw 0xaa55                ; Magic boot sector number
+mov ah, 0x0E
+mov al, 'K'
+int 0x10
+
+mov al, 'i'
+int 0x10
+
+mov al, 'n'
+int 0x10
+
+mov al, 'g'
+int 0x10
+
+loop:
+    jmp loop
+
+times 510-($-$$) db 0
+dw 0xAA55
+
